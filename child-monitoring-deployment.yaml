@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-test-deployment
+  namespace: support
+  labels:
+    app: child-monitoring
+    stage: dev
+    app.kubernetes.io/name: child-monitoring
+    app.kubernetes.io/instance: react-test
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: react-test
+    spec:
+      containers:
+        - name: child-monitoring
+          image: fmaus/react-test:argon
+          ports:
+            - containerPort: 3000
+              name: react-test-port
+          imagePullPolicy: Always
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: react-test
