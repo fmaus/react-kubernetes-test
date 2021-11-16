@@ -4,9 +4,9 @@ metadata:
   name: react-test-deployment
   namespace: support
   labels:
-    app: child-monitoring
+    app: react-test
     stage: dev
-    app.kubernetes.io/name: child-monitoring
+    app.kubernetes.io/name: react-test
     app.kubernetes.io/instance: react-test
 spec:
   replicas: 1
@@ -16,7 +16,7 @@ spec:
         app: react-test
     spec:
       containers:
-        - name: child-monitoring
+        - name: react-test
           image: fmaus/react-test:argon
           ports:
             - containerPort: 3000
